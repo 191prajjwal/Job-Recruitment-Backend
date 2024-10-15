@@ -26,7 +26,7 @@ const hashedPassword= await  bcrypt.hash(password,10)
     })
     await user.save()
 
-    res.status(200).json({"message":"user created successfully"})
+    res.status(201).json({"message":"user created successfully"})
 
 })
 
@@ -64,9 +64,7 @@ router.post("/login",async(req,res)=>{
     }
 
     const payload= {id:user._id}
-
     const token = jwt.sign(payload,process.env.JWT_SECRET_KEY)
-
     res.status(200).json(token)
 
 })
